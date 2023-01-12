@@ -18,12 +18,12 @@ Imports:
     ggplot2,
     glmnet,
     GSVA,
-    IOBR,
-	Seurat,
     AUCell,
 	survival,
 	survminer
 Suggests: 
     BiocManager,
 	devtools,
-    renv
+    renv,
+	Seurat,
+    IOBR

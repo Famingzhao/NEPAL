@@ -10,24 +10,6 @@
 #' @export
 #'
 #' @examples
-#' ## load R package and internal data set
-#' library(NEPal)
-#' load(system.file("data", "demo.Bulk.RData", package = "NEPal", mustWork = TRUE))
-#'
-#' ## calculate NE scores using NEPal gene sets and ssGSEA method
-#' NE.scores.ssgsea = NEPal_bulk(bulk.data = WCDT_expr,
-#'                               method = "ssGSEA",
-#'                               species="human",
-#'                               gene.sets="NEPal")
-#' ## print
-#' head(NE.scores.ssgsea)
-#' ## or users also can calculate NE scores using machine learning algorithms
-#' NE.scores.all = NEPal_bulk(bulk.data = WCDT_expr,
-#'                           method = c("all"),
-#'                           species="human")
-#' ## print
-#' head(NE.scores.all)
-
 NEPal_bulk <- function(bulk.data,
                              method=c("ssGSEA","Enet","Ridge","SVM","all"),
                              species=c("human","mouse"),
