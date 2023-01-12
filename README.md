@@ -188,6 +188,7 @@ p.mus
 ```{r}
 ## load R package and internal data set
 library(NEPal)
+library(Seurat)
 seurat.data = readRDS(system.file("data", "NatMed.He.2021.Rds",
                  package = "NEPal", mustWork = TRUE))
 
