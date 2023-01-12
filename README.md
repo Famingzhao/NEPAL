@@ -1,19 +1,42 @@
 # NEPal
 
-The goal of NEPal is to calculate NE (neuroendocrine) risk  score from bulk  transcriptome data or single-cell RNA-seq for prostate cancer in mouse and human. NEPal has multiple built-in algorithms and NE gene sets. The NEPC risk score could be used to stratify prognosis of prostate cancer.
+The goal of NEPal is to calculate NE (neuroendocrine) risk score from mouse or human bulk transcriptomic or single-cell RNA-seq (scRNA-seq) data for prostate cancer (PCa). NEPal has multiple built-in algorithms and NE gene sets. The NEPC risk score could be used to stratify prognosis of PCa.
 
 ## Citation
 
 For now, you can cite the following bioRxiv preprint.
+
+## Contact
+
+Xia Sheng, PhD, [xiasheng@hust.edu.cn]( xiasheng@hust.edu.cn)
+
+Key Laboratory of Environmental Health, Ministry of Education & Ministry of Environmental Protection, School of Public Health, Tongji Medical College, Huazhong University of Science and Technology, Wuhan, China.
+
+Any technical question please contact Faming Zhao ([famingzhao@hust.edu.cn](famingzhao@hust.edu.cn)).
+
+Copyright (C) 2022-2023 XiaLab @ HUST University.
+
+
 
 ## Installation
 
 You may install this package with:
 
 ```{r}
-# if (!require("devtools"))
-#     install.packages("devtools")
-# devtools::install_github("Famingzhao/NEPal")
+# options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
+# options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+depens<-c("dplyr", "survival", "survminer", "ggplot2", "biomaRt",
+          "e1071","GSVA","glmnet","devtools","IOBR", "Seurat","AUCell")
+
+for(i in 1:length(depens)){
+  depen<-depens[i]
+  if (!requireNamespace(depen, quietly = TRUE))
+    BiocManager::install(depen,update = FALSE)
+}
+
+# You can install NEPal from Github:
+devtools::install_github("Famingzhao/NEPal")
 ```
 
 ## Example

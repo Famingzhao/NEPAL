@@ -1,10 +1,13 @@
 Package: NEPal
-Title: What the Package Does (One Line, Title Case)
+Title: Calculate NEPC risk score from bulk transcriptomic or scRNA-seq data for prostate cancer
 Version: 1.0.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person(given = "Faming",
+           family = "Zhao",
+           role = c("aut", "cre"),
+           email = "famingzhao@hust.edu.cn",
+           comment = c(ORCID = "0000-0002-8238-3863"))
+Description: The goal of NEPal is to calculate NE risk score from mouse or human bulk transcriptomic or scRNA-seq data for prostate cancer. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -15,7 +18,12 @@ Imports:
     ggplot2,
     glmnet,
     GSVA,
-    IOBR
+    IOBR,
+	Seurat,
+    AUCell,
+	survival,
+	survminer
 Suggests: 
     BiocManager,
+	devtools,
     renv
