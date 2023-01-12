@@ -1,0 +1,713 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+/*因为不同主题的代码块部分不一样，code部分统一*/
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+
+
+/*深色背景*/
+
+#write .md-fences:not([mermaid-type])  {
+    padding-top: 7px;
+    border-radius: 10px;
+    background-color: #282c34;
+    color: #eeeeee;
+}
+
+.code-tooltip .ty-input,
+.code-tooltip input {
+    color: #eee;
+}
+
+
+/*MAC的三个图标*/
+.CodeMirror-wrap .CodeMirror-scroll {
+    padding-top: 20px;
+}
+
+#write .md-fences:before {
+    content: "";
+    z-index: 4;
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 13px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    float: left;
+    background-color: #fa3534;
+}
+
+#write .CodeMirror-scroll:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 29px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    float: left;
+    z-index: 999;
+    background-color: #ff9900;
+}
+#write .md-fences::after {
+    content: "";
+    z-index: 4;
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 53px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    float: left;
+    background-color: #19be6b;
+}
+
+/*配色*/
+.CodeMirror-line .cm-number,/*数字*/
+.CodeMirror-line .cm-property {/*被调用的方法*/
+    color: #f08d49;
+}
+.CodeMirror-line .cm-variable-3,/*形参,类型*/
+.CodeMirror-line .cm-qualifier,/*css class*/
+.CodeMirror-line .cm-variable-2 {/*被使用的形参*/
+    color: #FFCB6B;
+}
+.CodeMirror-line .cm-meta,/*省略号,注解等*/
+.CodeMirror-line .cm-atom,/*css属性值，布尔值等等*/
+.CodeMirror-line .cm-keyword{/*关键字*/
+    color: #cc99cd;
+}
+.CodeMirror-line .cm-def,/*变量名*/
+.CodeMirror-line .cm-variable {/*被使用的变量名*/
+    color: #FFCB6B;
+}
+.CodeMirror-line .cm-builtin {/*被调用的属性*/
+    color: #82AAFF;
+}
+.CodeMirror-line .cm-comment {/*注释*/
+    color: #888;
+}
+.CodeMirror-line .cm-string,/*字符串*/
+.CodeMirror-line .cm-string-2 {/*正则表达式*/
+    color: #7ec699
+}
+.CodeMirror-line .cm-operator {/*运算符*/
+    color: #67cdcc
+}
+.CodeMirror div.CodeMirror-cursor {/*光标*/
+    border-left: 1px solid #fff;
+    z-index: 3;
+}
+.CodeMirror-selected,/*选中的背景*/
+.CodeMirror-selectedtext {
+    background: #666 !important;
+}
+
+/*html*/
+.CodeMirror-line .cm-tag{/*标签名字*/
+    color: #F07178;
+}
+.CodeMirror-line .cm-bracket{/*标签尖括号*/
+    color: #FFF;
+}
+.CodeMirror-line .cm-attribute{/*属性*/
+    color: #FFCB6B;
+}
+
+
+
+</style><title>README</title>
+</head>
+<body class='typora-export os-windows typora-export-show-outline typora-export-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1 outline-item-open"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#nepal">NEPal</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#citation">Citation</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#installation">Installation</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#example">Example</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#for-bulk-transcriptome-data">For bulk transcriptome data:</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#survival-analysis-using-ne-risk-score">Survival analysis using NE risk score：</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#for-mouse-transcriptome--data">For mouse transcriptome  data:</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3 outline-item-single"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#for-scrna-seq-data">For scRNA-seq data:</a></div><ul class="outline-children"></ul></li></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='nepal'><span>NEPal</span></h1><p><span>The goal of NEPal is to calculate NE (neuroendocrine) risk  score from bulk  transcriptome data or single-cell RNA-seq for prostate cancer in mouse and human. NEPal has multiple built-in algorithms and NE gene sets. The NEPC risk score could be used to stratify prognosis of prostate cancer.</span></p><h2 id='citation'><span>Citation</span></h2><p><span>For now, you can cite the following bioRxiv preprint.</span></p><h2 id='installation'><span>Installation</span></h2><p><span>You may install this package with:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="{r}"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="{r}"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 29.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># if (!require("devtools"))</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># &nbsp; &nbsp; install.packages("devtools")</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># devtools::install_github("Famingzhao/NEPal")</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 67px;"></div><div class="CodeMirror-gutters" style="display: none; height: 67px;"></div></div></div></pre><h2 id='example'><span>Example</span></h2><h3 id='for-bulk-transcriptome-data'><span>For bulk transcriptome data:</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="{r}" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="{r}"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 29.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## load R package and internal data set</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">library</span>(<span class="cm-variable">NEPal</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">load</span>(<span class="cm-variable">system.file</span>(<span class="cm-string">"data"</span>, <span class="cm-string">"demo.Bulk.RData"</span>, <span class="cm-variable">package</span> <span class="cm-operator">=</span> <span class="cm-string">"NEPal"</span>, <span class="cm-variable">mustWork</span> <span class="cm-operator">=</span> <span class="cm-variable">TRUE</span>)) <span class="cm-comment"># load example data</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## calculate NE scores using NEPal gene sets and ssGSEA method</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">NE.scores.ssgsea</span> <span class="cm-operator">=</span> <span class="cm-variable">NEPal_bulk</span>(<span class="cm-variable">bulk.data</span> <span class="cm-operator">=</span> <span class="cm-variable">WCDT_expr</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">method</span> <span class="cm-operator">=</span> <span class="cm-string">"ssGSEA"</span>, <span class="cm-comment">#method = c("ssGSEA","Enet","Ridge","SVM","all")</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">species</span><span class="cm-operator">=</span><span class="cm-string">"human"</span>, <span class="cm-comment">#species=c("human","mouse")</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">gene.sets</span><span class="cm-operator">=</span><span class="cm-string">"NEPal"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># gene.sets = c("all","EurUrol.2005", "CancerDiscov.2011", "CancerRes.2014", "NatMed.2016",</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "CellRep.2018.scRNA", "ClinCancerRes.2015", "JClinInvest.2019",</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "IntJCancer.2019", "HP_NE_neoplasm", "JClinOncol.2018", "BMC.Cancer.2017","NEPal")</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## print</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">head</span>(<span class="cm-variable">NE.scores.ssgsea</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># ID Index &nbsp; NE_sig_UP NE_sig_DN &nbsp; NE_UP_DN</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 1 DTB-003 &nbsp; &nbsp; 1  0.47120891 0.2867273  0.1844816</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 2 DTB-005 &nbsp; &nbsp; 2 -0.07352663 0.6371859 -0.7107125</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 3 DTB-008 &nbsp; &nbsp; 3 -0.13467574 0.5162950 -0.6509708</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 4 DTB-009 &nbsp; &nbsp; 4 -0.07574755 0.5896833 -0.6654309</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 5 DTB-011 &nbsp; &nbsp; 5 -0.22116854 0.6971295 -0.9182981</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 6 DTB-018 &nbsp; &nbsp; 6 -0.11747824 0.7080533 -0.8255315</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## or users also can calculate NE scores using machine learning algorithms</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">NE.scores.all</span> <span class="cm-operator">=</span> <span class="cm-variable">NEPal_bulk</span>(<span class="cm-variable">bulk.data</span> <span class="cm-operator">=</span> <span class="cm-variable">WCDT_expr</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">method</span> <span class="cm-operator">=</span> <span class="cm-variable">c</span>(<span class="cm-string">"all"</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">species</span><span class="cm-operator">=</span><span class="cm-string">"human"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## print</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">head</span>(<span class="cm-variable">NE.scores.all</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># ID Index &nbsp; NE_sig_UP NE_sig_DN &nbsp; NE_UP_DN &nbsp; alpha.0 alpha.0.1 alpha.0.2 alpha.0.3 alpha.0.4 alpha.0.5</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 1 DTB-003 &nbsp; &nbsp; 1  0.47120891 0.2867273  0.1844816 0.9073267 0.8644939 0.8194201 0.8188917 0.8344952 0.8415515</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 2 DTB-005 &nbsp; &nbsp; 2 -0.07352663 0.6371859 -0.7107125 0.3542819 0.3669717 0.4149525 0.4753370 0.4905505 0.5072813</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 3 DTB-008 &nbsp; &nbsp; 3 -0.13467574 0.5162950 -0.6509708 0.3290364 0.3427523 0.4021970 0.4803067 0.5057132 0.5191514</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 4 DTB-009 &nbsp; &nbsp; 4 -0.07574755 0.5896833 -0.6654309 0.4112042 0.4762680 0.4809674 0.5129319 0.5335130 0.5504454</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 5 DTB-011 &nbsp; &nbsp; 5 -0.22116854 0.6971295 -0.9182981 0.3296918 0.3780843 0.4121598 0.4413186 0.4431671 0.4439999</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 6 DTB-018 &nbsp; &nbsp; 6 -0.11747824 0.7080533 -0.8255315 0.3206407 0.3597761 0.3816835 0.4119724 0.4191327 0.4204871</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># alpha.0.6 alpha.0.7 alpha.0.8 alpha.0.9 &nbsp; alpha.1 Ridge.score SVM.score</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 1 0.8478319 0.8428098 0.8360111 0.8305164 0.8212084 &nbsp; 0.9999918 0.8237709</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 2 0.5148875 0.5319407 0.5354641 0.5389421 0.5400744 &nbsp; 0.9787062 0.3630503</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 3 0.5288195 0.5368882 0.5419930 0.5479270 0.5505872 &nbsp; 0.9701211 0.2257297</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 4 0.5624224 0.5814033 0.5926642 0.6039962 0.6109182 &nbsp; 0.9901306 0.6156952</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 5 0.4388316 0.4493126 0.4534616 0.4584895 0.4598450 &nbsp; 0.9703820 0.1705570</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 6 0.4139546 0.4320603 0.4331922 0.4342733 0.4304872 &nbsp; 0.9665735 0.3707302</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1098px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1098px;"></div></div></div></pre><h3 id='survival-analysis-using-ne-risk-score'><span>Survival analysis using NE risk score：</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="r" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="r"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 29.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">library</span>(<span class="cm-variable">survminer</span>)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">library</span>(<span class="cm-variable">survival</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">library</span>(<span class="cm-variable">ggplot2</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">table</span>(<span class="cm-variable">row.names</span>(<span class="cm-variable">WCDT_phe</span>) <span class="cm-operator">==</span> <span class="cm-variable">NE.scores.ssgsea</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">ID</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># TRUE </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 66</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">WCDT_phe</span> <span class="cm-operator">=</span> <span class="cm-variable">cbind</span>(<span class="cm-variable">WCDT_phe</span>,<span class="cm-variable">NE.scores.ssgsea</span>[,<span class="cm-operator">-</span><span class="cm-variable">c</span>(<span class="cm-number">1</span>,<span class="cm-number">2</span>)])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">WCDT_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">OS.mCRPC</span> <span class="cm-comment"># days</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">WCDT_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">OS.month</span> <span class="cm-operator">=</span> <span class="cm-variable">WCDT_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">OS.mCRPC</span><span class="cm-operator">/</span><span class="cm-number">30</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># find optimal cutoff by Survminer or customized definition by user</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">cut</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">surv_cutpoint</span>(<span class="cm-variable">WCDT_phe</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">'OS.month'</span>,<span class="cm-string">'Event'</span>,<span class="cm-string">'NE_UP_DN'</span>) &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">print</span>(<span class="cm-variable">paste0</span>(<span class="cm-string">'The optimal cutpoint is '</span>,<span class="cm-variable">cut</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">cutpoint</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">cutpoint</span>,<span class="cm-string">'.'</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">WCDT_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">NE_group</span> <span class="cm-operator">=</span> <span class="cm-variable">ifelse</span>(<span class="cm-variable">WCDT_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">NE_UP_DN</span><span class="cm-operator">&gt;</span> <span class="cm-variable">cut</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">cutpoint</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">cutpoint</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-string">"High"</span>,<span class="cm-string">"Low"</span>) <span class="cm-operator cm-variable-2">%&gt;%</span> <span class="cm-variable">factor</span>(<span class="cm-variable">levels</span> <span class="cm-operator">=</span> <span class="cm-variable">c</span>(<span class="cm-string">"Low"</span>,<span class="cm-string">"High"</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">WCDT_fit_os</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">survfit</span>(<span class="cm-variable">Surv</span>(<span class="cm-variable">OS.month</span>, <span class="cm-variable">Event</span>)<span class="cm-operator">~</span><span class="cm-variable">NE_group</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">data</span><span class="cm-operator">=</span> <span class="cm-variable">WCDT_phe</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">ggsurvplot</span>(<span class="cm-variable">WCDT_fit_os</span>, <span class="cm-variable">conf.int</span><span class="cm-operator">=</span><span class="cm-variable">F</span>, <span class="cm-variable">pval</span><span class="cm-operator">=</span><span class="cm-variable">TRUE</span>,<span class="cm-variable">risk.table</span> <span class="cm-operator">=</span> <span class="cm-variable">F</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Vis using `draw.survival` built-in function</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">draw.survival</span>(<span class="cm-variable">survfit</span><span class="cm-operator">=</span> <span class="cm-variable">WCDT_fit_os</span>,<span class="cm-variable">ylab</span><span class="cm-operator">=</span> <span class="cm-string">"OS"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">legend.position</span> <span class="cm-operator">=</span> <span class="cm-string">"top"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">plot.title</span> <span class="cm-operator">=</span><span class="cm-string">"WCDT CRPC/Met"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">break.time</span> <span class="cm-operator">=</span> <span class="cm-atom">NA</span>, <span class="cm-variable">xlimt</span> <span class="cm-operator">=</span> <span class="cm-atom">NA</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">palette</span> <span class="cm-operator">=</span> <span class="cm-variable">c</span>(<span class="cm-string">'NE.sig Low'</span> <span class="cm-operator">=</span> <span class="cm-string">"#1F78B4"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">'NE.sig High'</span><span class="cm-operator">=</span><span class="cm-string">"#E31A1C"</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">legend.labs</span> <span class="cm-operator">=</span> <span class="cm-variable">c</span>(<span class="cm-string">'NE.sig Low'</span>,<span class="cm-string">'NE.sig High'</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">risk.table</span> <span class="cm-operator">=</span> <span class="cm-variable">F</span>,<span class="cm-variable">front.size</span> <span class="cm-operator">=</span> <span class="cm-number">12</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 739px;"></div><div class="CodeMirror-gutters" style="display: none; height: 739px;"></div></div></div></pre><p><img src="https://zhaoxiaoming-1306159049.cos.ap-nanjing.myqcloud.com/imgs/image-20230104134101102.webp" alt="image-20230104134101102" style="zoom:80%;" /></p><h3 id='for-mouse-transcriptome--data'><span>For mouse transcriptome  data:</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="r" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="r"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 29.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## load internal GSE69903 mouse data set</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">load</span>(<span class="cm-variable">system.file</span>(<span class="cm-string">"data"</span>,<span class="cm-string">"demo.Mus.Bulk.RData"</span>,<span class="cm-variable">package</span> <span class="cm-operator">=</span> <span class="cm-string">"NEPal"</span>, <span class="cm-variable">mustWork</span> <span class="cm-operator">=</span> <span class="cm-variable">TRUE</span>)) <span class="cm-comment"># load example data</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## calculate NE scores using NEPal gene sets and ssGSEA method</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">NE.mus.ssgsea</span> <span class="cm-operator">=</span> <span class="cm-variable">NEPal_bulk</span>(<span class="cm-variable">bulk.data</span> <span class="cm-operator">=</span> <span class="cm-variable">GSE69903_mus_expr</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">method</span> <span class="cm-operator">=</span> <span class="cm-string">"ssGSEA"</span>, <span class="cm-comment">#method = c("ssGSEA","Enet","Ridge","SVM","all")</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">species</span> <span class="cm-operator">=</span> <span class="cm-string">"mouse"</span>, <span class="cm-comment">#species=c("human","mouse")</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">gene.sets</span> <span class="cm-operator">=</span> <span class="cm-string">"NEPal"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">head</span>(<span class="cm-variable">NE.mus.ssgsea</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">table</span>(<span class="cm-variable">row.names</span>(<span class="cm-variable">GSE69903_mus_phe</span>) <span class="cm-operator">==</span> <span class="cm-variable">NE.mus.ssgsea</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">ID</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># TRUE </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 29 </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">GSE69903_mus_phe</span> <span class="cm-operator">=</span> <span class="cm-variable">cbind</span>(<span class="cm-variable">GSE69903_mus_phe</span>,<span class="cm-variable">NE.mus.ssgsea</span>[,<span class="cm-operator">-</span><span class="cm-variable">c</span>(<span class="cm-number">1</span>,<span class="cm-number">2</span>)])</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## Vis </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">if</span>(<span class="cm-variable">T</span>){</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">mytheme</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">theme</span>(<span class="cm-variable">plot.title</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">size</span> <span class="cm-operator">=</span> <span class="cm-number">10</span>,<span class="cm-variable">color</span><span class="cm-operator">=</span><span class="cm-string">"black"</span>,<span class="cm-variable">hjust</span> <span class="cm-operator">=</span> <span class="cm-number">0.5</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">axis.ticks</span> <span class="cm-operator">=</span> <span class="cm-variable">element_line</span>(<span class="cm-variable">color</span> <span class="cm-operator">=</span> <span class="cm-string">"black"</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">axis.title</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">size</span> <span class="cm-operator">=</span> <span class="cm-number">8</span>,<span class="cm-variable">color</span> <span class="cm-operator">=</span><span class="cm-string">"black"</span>), </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">axis.text</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">size</span> <span class="cm-operator">=</span> <span class="cm-number">8</span>,<span class="cm-variable">color</span> <span class="cm-operator">=</span> <span class="cm-string">"black"</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">axis.text.x</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">angle</span> <span class="cm-operator">=</span> <span class="cm-number">90</span>, <span class="cm-variable">hjust</span> <span class="cm-operator">=</span> <span class="cm-number">0.5</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">panel.grid</span><span class="cm-operator">=</span><span class="cm-variable">element_blank</span>(),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">legend.position</span> <span class="cm-operator">=</span> <span class="cm-string">"right"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">legend.text</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">size</span> <span class="cm-operator">=</span> <span class="cm-number">8</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">legend.title</span><span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">size</span> <span class="cm-operator">=</span> <span class="cm-number">8</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">panel.border</span> <span class="cm-operator">=</span> <span class="cm-variable">element_rect</span>(<span class="cm-variable">fill</span> <span class="cm-operator">=</span> <span class="cm-atom">NA</span>,<span class="cm-variable">color</span> <span class="cm-operator">=</span> <span class="cm-string">"black"</span>, <span class="cm-variable">size</span> <span class="cm-operator">=</span> <span class="cm-number">0.8</span>, <span class="cm-variable">linetype</span> <span class="cm-operator">=</span> <span class="cm-string">"solid"</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">strip.background</span> <span class="cm-operator">=</span> <span class="cm-variable">element_rect</span>(<span class="cm-variable">color</span> <span class="cm-operator">=</span><span class="cm-string">"black"</span>,<span class="cm-variable">size</span> <span class="cm-operator">=</span> <span class="cm-number">1</span>, <span class="cm-variable">linetype</span> <span class="cm-operator">=</span><span class="cm-string">"solid"</span>) </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">GSE69903_mus_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">Group</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">GSE69903_mus_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">Group</span> <span class="cm-operator">=</span> <span class="cm-variable">factor</span>(<span class="cm-variable">GSE69903_mus_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">Group</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">levels</span> <span class="cm-operator">=</span> <span class="cm-variable">c</span>(<span class="cm-string">"Non-NE"</span>,<span class="cm-string">"NEPC"</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">GSE69903_mus_phe</span> <span class="cm-operator">=</span> <span class="cm-variable">GSE69903_mus_phe</span>[<span class="cm-variable">order</span>(<span class="cm-variable">GSE69903_mus_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">NE_UP_DN</span>),]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">GSE69903_mus_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">geo_accession</span> <span class="cm-operator">=</span> <span class="cm-variable">factor</span>(<span class="cm-variable">GSE69903_mus_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">geo_accession</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">levels</span> <span class="cm-operator">=</span> <span class="cm-variable">GSE69903_mus_phe</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">geo_accession</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">p.mus</span> <span class="cm-operator">=</span> <span class="cm-variable">ggplot</span>(<span class="cm-variable">GSE69903_mus_phe</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">mapping</span> <span class="cm-operator">=</span> <span class="cm-variable">aes</span>(<span class="cm-variable">x</span> <span class="cm-operator">=</span> <span class="cm-variable">geo_accession</span>,<span class="cm-variable">y</span><span class="cm-operator">=</span> <span class="cm-variable">NE_UP_DN</span>,<span class="cm-variable">fill</span><span class="cm-operator">=</span><span class="cm-variable">Group</span>))<span class="cm-operator">+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">geom_bar</span>(<span class="cm-variable">stat</span> <span class="cm-operator">=</span> <span class="cm-string">"identity"</span>,<span class="cm-variable">width</span> <span class="cm-operator">=</span> <span class="cm-number">1</span>,<span class="cm-variable">color</span><span class="cm-operator">=</span><span class="cm-string">"black"</span>) <span class="cm-operator">+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># coord_cartesian(expand = 0,clip = 'off') +</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># scale_y_continuous(limits = c(-1,0.25))+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">theme_bw</span>()<span class="cm-operator">+</span> <span class="cm-variable">theme</span>(<span class="cm-variable">axis.text.x</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">angle</span> <span class="cm-operator">=</span> <span class="cm-number">90</span>,<span class="cm-variable">vjust</span> <span class="cm-operator">=</span> <span class="cm-number">0.5</span>))<span class="cm-operator">+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">labs</span>(<span class="cm-variable">x</span><span class="cm-operator">=</span><span class="cm-atom">NULL</span>,<span class="cm-variable">y</span><span class="cm-operator">=</span><span class="cm-string">"NE_UP_DN (ssGSEA)"</span>,<span class="cm-variable">title</span> <span class="cm-operator">=</span> <span class="cm-string">"GSE69903 mouse (n=29)"</span>)<span class="cm-operator">+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">scale_fill_manual</span>(<span class="cm-variable">values</span> <span class="cm-operator">=</span> <span class="cm-variable">c</span>(<span class="cm-string">"Non-NE"</span> <span class="cm-operator">=</span> <span class="cm-string">"#0072B5FF"</span>,<span class="cm-string">"NEPC"</span> <span class="cm-operator">=</span> <span class="cm-string">"#BC3C29FF"</span>))<span class="cm-operator">+</span><span class="cm-variable">mytheme</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">p.mus</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1053px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1053px;"></div></div></div></pre><p><img src="https://zhaoxiaoming-1306159049.cos.ap-nanjing.myqcloud.com/imgs/image-20230104140349393.webp" referrerpolicy="no-referrer" alt="image-20230104140349393"></p><h3 id='for-scrna-seq-data'><span>For scRNA-seq data:</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="{r}" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="{r}"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 29.2px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## load R package and internal data set</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">library</span>(<span class="cm-variable">NEPal</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">seurat.data</span> <span class="cm-operator">=</span> <span class="cm-variable">readRDS</span>(<span class="cm-variable">system.file</span>(<span class="cm-string">"data"</span>, <span class="cm-string">"NatMed.He.2021.Rds"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">package</span> <span class="cm-operator">=</span> <span class="cm-string">"NEPal"</span>, <span class="cm-variable">mustWork</span> <span class="cm-operator">=</span> <span class="cm-variable">TRUE</span>))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## calculate NE scores using NEPal and published gene sets based on AUCell method</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">NE.seurat</span> <span class="cm-operator">=</span> <span class="cm-variable">NEPal_scRNA</span>(<span class="cm-variable">seurat.data</span><span class="cm-operator">=</span><span class="cm-variable">seurat.data</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">method</span> <span class="cm-operator">=</span> <span class="cm-string">"AUCell"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">species</span><span class="cm-operator">=</span> <span class="cm-string">"human"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">ncores</span><span class="cm-operator">=</span><span class="cm-number">1</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">assay.names</span> <span class="cm-operator">=</span> <span class="cm-string">"NE"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">DefaultAssay</span><span class="cm-operator">=</span><span class="cm-variable">F</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">NE.seurat</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># An object of class Seurat </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 25492 features across 1954 samples within 2 assays </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># Active assay: RNA (25478 features, 0 variable features)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 1 other assay present: NE &nbsp; &nbsp; </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## print</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">NE.seurat</span>@<span class="cm-variable">assays</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">NE</span>@<span class="cm-variable">data</span>[<span class="cm-number">1</span><span class="cm-operator">:</span><span class="cm-number">10</span>,<span class="cm-number">1</span><span class="cm-operator">:</span><span class="cm-number">5</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># 0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2 &nbsp; &nbsp; &nbsp; &nbsp;  3 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  4</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># EurUrol.2005 &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp;  . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># CancerDiscov.2011  0.030069409 0.028371479 0.027095164 0.05537486 0.0309613951</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># CancerRes.2014 &nbsp; &nbsp; 0.028906723 0.027093847 0.030111064 0.03363752 0.0307297846</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># NatMed.2016 &nbsp; &nbsp; &nbsp;  . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0.05425526 . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># CellRep.2018.scRNA 0.015979749 . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0.02746803 0.0159667684</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># ClinCancerRes.2015 0.014439507 . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0.023929059 0.01329820 0.0058283802</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># JClinInvest.2019 &nbsp; 0.004972814 0.003544499 0.002545555 . &nbsp; &nbsp; &nbsp; &nbsp;  0.0004600400</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># IntJCancer.2019 &nbsp;  0.045452989 0.020250315 0.037110596 0.04981038 0.0257334372</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># HP-NE-neoplasm &nbsp; &nbsp; 0.171063411 0.048336883 0.106668851 0.04021441 0.0676716369</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># JClinOncol.2018 &nbsp;  0.027398209 . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 0.039934695 0.03074259 . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># BMC.Cancer.2017 &nbsp;  0.015587477 0.018236955 0.003543278 0.02679190 0.0201031308</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># NE-sig-UP &nbsp; &nbsp; &nbsp; &nbsp;  0.001904375 0.010594900 0.002146047 0.03352474 0.0001256694</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># NE-sig-DN &nbsp; &nbsp; &nbsp; &nbsp;  0.153510172 0.013322696 0.128280814 0.04104507 0.0314120463</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># NE-UP-DN &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; . &nbsp; &nbsp; &nbsp; &nbsp;  . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">## Vis</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">p2</span> <span class="cm-operator">=</span> <span class="cm-variable">VlnPlot</span>(<span class="cm-variable">NE.seurat</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">pt.size</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">group.by</span> <span class="cm-operator">=</span> <span class="cm-string">"celltype"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">features</span> <span class="cm-operator">=</span> <span class="cm-variable">row.names</span>(<span class="cm-variable">NE.seurat</span>@<span class="cm-variable">assays</span><span class="cm-operator cm-dollar">$</span><span class="cm-variable">NE</span>@<span class="cm-variable">data</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">assay</span> <span class="cm-operator">=</span> <span class="cm-string">"NE"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">stack</span> <span class="cm-operator">=</span> <span class="cm-variable">F</span>,<span class="cm-variable">ncol</span> <span class="cm-operator">=</span> <span class="cm-number">7</span>)<span class="cm-operator">&amp;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">labs</span>(<span class="cm-variable">x</span><span class="cm-operator">=</span><span class="cm-atom">NULL</span>,<span class="cm-variable">y</span><span class="cm-operator">=</span><span class="cm-string">"AUCell scores"</span>)<span class="cm-operator">&amp;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">stat_summary</span>(<span class="cm-variable">fun</span> <span class="cm-operator">=</span> <span class="cm-string">"mean"</span>, <span class="cm-variable">geom</span> <span class="cm-operator">=</span> <span class="cm-string">"point"</span>,<span class="cm-variable">position</span> <span class="cm-operator">=</span> <span class="cm-variable">position_dodge</span>(<span class="cm-number">0.9</span>)) <span class="cm-operator">&amp;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">stat_summary</span>(<span class="cm-variable">fun.data</span> <span class="cm-operator">=</span> <span class="cm-string">"mean_sd"</span>, <span class="cm-variable">geom</span> <span class="cm-operator">=</span> <span class="cm-string">"errorbar"</span>, <span class="cm-variable">width</span> <span class="cm-operator">=</span> <span class="cm-number">.15</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-variable">size</span> <span class="cm-operator">=</span> <span class="cm-number">0.3</span>,<span class="cm-variable">position</span> <span class="cm-operator">=</span> <span class="cm-variable">position_dodge</span>(<span class="cm-number">0.9</span>))<span class="cm-operator">&amp;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-variable">theme</span>(<span class="cm-variable">plot.title</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">size</span> <span class="cm-operator">=</span> <span class="cm-number">10</span>,<span class="cm-variable">color</span><span class="cm-operator">=</span><span class="cm-string">"black"</span>,<span class="cm-variable">hjust</span> <span class="cm-operator">=</span> <span class="cm-number">0.5</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">axis.ticks</span> <span class="cm-operator">=</span> <span class="cm-variable">element_line</span>(<span class="cm-variable">color</span> <span class="cm-operator">=</span> <span class="cm-string">"black"</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">axis.title</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">size</span> <span class="cm-operator">=</span> <span class="cm-number">8</span>,<span class="cm-variable">color</span> <span class="cm-operator">=</span><span class="cm-string">"black"</span>), </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">axis.text</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">size</span><span class="cm-operator">=</span><span class="cm-number">8</span>,<span class="cm-variable">color</span> <span class="cm-operator">=</span> <span class="cm-string">"black"</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">axis.text.x</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">angle</span> <span class="cm-operator">=</span> <span class="cm-number">45</span>, <span class="cm-variable">hjust</span> <span class="cm-operator">=</span> <span class="cm-number">1</span> ),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">panel.grid</span><span class="cm-operator">=</span><span class="cm-variable">element_blank</span>(),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">legend.position</span> <span class="cm-operator">=</span> <span class="cm-string">"none"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">legend.text</span> <span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">size</span><span class="cm-operator">=</span> <span class="cm-number">8</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">legend.title</span><span class="cm-operator">=</span> <span class="cm-variable">element_text</span>(<span class="cm-variable">size</span><span class="cm-operator">=</span> <span class="cm-number">8</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">strip.background</span> <span class="cm-operator">=</span> <span class="cm-variable">element_rect</span>(<span class="cm-variable">color</span><span class="cm-operator">=</span><span class="cm-string">"black"</span>,<span class="cm-variable">size</span><span class="cm-operator">=</span> <span class="cm-number">1</span>, <span class="cm-variable">linetype</span><span class="cm-operator">=</span><span class="cm-string">"solid"</span>) <span class="cm-comment"># fill="#FC4E07", </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  )<span class="cm-semi">;</span><span class="cm-variable">p2</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1299px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1299px;"></div></div></div></pre><p><img src="https://zhaoxiaoming-1306159049.cos.ap-nanjing.myqcloud.com/imgs/image-20221224162704151.webp" referrerpolicy="no-referrer" alt="image-20221224162704151"></p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script></body>
+</html>
