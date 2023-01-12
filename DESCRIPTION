@@ -1,4 +1,4 @@
-Package: NEPal
+Package: NEPAL
 Title: Calculate NEPC risk score from bulk transcriptomic or scRNA-seq data for prostate cancer
 Version: 1.0.0
 Authors@R: 
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "famingzhao@hust.edu.cn",
            comment = c(ORCID = "0000-0002-8238-3863"))
-Description: The goal of NEPal is to calculate NE risk score from mouse or human bulk transcriptomic or scRNA-seq data for prostate cancer. 
+Description: The goal of NEPAL is to calculate NE risk score from mouse or human bulk transcriptomic or scRNA-seq data for prostate cancer. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

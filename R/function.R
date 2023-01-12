@@ -1,5 +1,4 @@
-#' @name NEPal_bulk
-#' Title NEPal_bulk
+#' Title NEPAL_bulk
 #'
 #' @param bulk.data input bulk transcriptome data.
 #' @param method
@@ -10,13 +9,13 @@
 #' @export
 #'
 #' @examples
-NEPal_bulk <- function(bulk.data,
+NEPAL_bulk <- function(bulk.data,
                              method=c("ssGSEA","Enet","Ridge","SVM","all"),
                              species=c("human","mouse"),
                              gene.sets = c("all","EurUrol.2005", "CancerDiscov.2011", "CancerRes.2014", "NatMed.2016",
                                            "CellRep.2018.scRNA", "ClinCancerRes.2015", "JClinInvest.2019",
                                            "IntJCancer.2019", "HP_NE_neoplasm", "JClinOncol.2018", "BMC.Cancer.2017",
-                                           "NEPal")
+                                           "NEPAL")
 ){
   species <- match.arg(species)
   gene.sets <- match.arg(gene.sets)
@@ -26,14 +25,14 @@ NEPal_bulk <- function(bulk.data,
   suppressWarnings(library(IOBR))
   seed <- 1
   load(system.file("data", "model_gene.sets.Rdata",
-                   package = "NEPal", mustWork = TRUE))
+                   package = "NEPAL", mustWork = TRUE))
   normalize <- function(x) {
     return ((x - min(x)) / (max(x) - min(x)))
   }
 
   if(species == "mouse"){
     load(system.file("data", "biomaRt_ensembl_annotation.Rdata",
-                     package = "NEPal", mustWork = TRUE))
+                     package = "NEPAL", mustWork = TRUE))
     convertMouseGeneList.Bulk <- function(bulk.data,
                                           Mus.data = F,
                                           Human.data = F,...){
@@ -191,7 +190,7 @@ NEPal_bulk <- function(bulk.data,
       rs$NE_UP_DN = rs$NE_sig_UP-rs$NE_sig_DN
     }
 
-    if(gene.sets=="NEPal"){
+    if(gene.sets=="NEPAL"){
       rs <- IOBR::calculate_sig_score(pdata           = NULL,
                                       eset            = bulk.data,
                                       signature       = ne.markers.list[c("NE_sig_UP",
@@ -276,7 +275,7 @@ NEPal_bulk <- function(bulk.data,
 }
 
 
-#' Title NEPal_scRNA
+#' Title NEPAL_scRNA
 #'
 #' @param seurat.data input scRNA-seq seurat data.
 #' @param method
@@ -290,7 +289,7 @@ NEPal_bulk <- function(bulk.data,
 #' @export
 #'
 #' @examples
-NEPal_scRNA <- function(seurat.data,
+NEPAL_scRNA <- function(seurat.data,
                               method = "AUCell",
                               species=c("human","mouse"),
                               ncores=2,assay.names = "NE",DefaultAssay=F,...
@@ -298,7 +297,7 @@ NEPal_scRNA <- function(seurat.data,
   species <- match.arg(species)
   suppressWarnings(library(dplyr))
   sc.Pathway.Seurat = function (obj, method = "AUCell", imputation = F, ncores = 2,
-                                geneList = system.file("data", "NE_cells_markers.gmt",package = "NEPal"),
+                                geneList = system.file("data", "NE_cells_markers.gmt",package = "NEPAL"),
                                 assay.names = "NE",DefaultAssay=F)
 
   {
@@ -368,7 +367,7 @@ NEPal_scRNA <- function(seurat.data,
   }
   if(species == "mouse"){
     load(system.file("data", "biomaRt_ensembl_annotation.Rdata",
-                     package = "NEPal", mustWork = TRUE))
+                     package = "NEPAL", mustWork = TRUE))
     convertMouseGeneList.Seurat <- function(seurat.data,
                                             Mus.data = F,
                                             Human.data = F,...){

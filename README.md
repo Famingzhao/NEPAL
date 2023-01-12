@@ -1,6 +1,6 @@
-# NEPal
+# NEPAL
 
-The goal of NEPal is to calculate NE (neuroendocrine) risk score from mouse or human bulk transcriptomic or single-cell RNA-seq (scRNA-seq) data for prostate cancer (PCa). NEPal has multiple built-in algorithms and NE gene sets. The NEPC risk score could be used to stratify prognosis of PCa.
+The goal of NEPAL is to calculate NE (neuroendocrine) risk score from mouse or human bulk transcriptomic or single-cell RNA-seq (scRNA-seq) data for prostate cancer (PCa). NEPAL has multiple built-in algorithms and NE gene sets. The NEPC risk score could be used to stratify prognosis of PCa.
 
 ## Citation
 
@@ -26,17 +26,22 @@ You may install this package with:
 # options("repos"= c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/"))
 # options(BioC_mirror="http://mirrors.tuna.tsinghua.edu.cn/bioconductor/")
 if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
-depens<-c("dplyr", "survival", "survminer", "ggplot2", "biomaRt",
-          "e1071","GSVA","glmnet","devtools","IOBR", "Seurat","AUCell")
 
-for(i in 1:length(depens)){
-  depen<-depens[i]
-  if (!requireNamespace(depen, quietly = TRUE))
-    BiocManager::install(depen,update = FALSE)
-}
+#IOBR is an R package to perform comprehensive analysis of tumor microenvironment and signatures for immuno-oncology.
+# devtools::install_github("IOBR/IOBR")
 
-# You can install NEPal from Github:
-devtools::install_github("Famingzhao/NEPal")
+list.of.packages <- c("dplyr", "survival", "survminer", "ggplot2", "biomaRt",
+                      "e1071","GSVA","glmnet","devtools", "Seurat","AUCell")
+#checking missing packages from list
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+packToInst <- setdiff(list.of.packages, installed.packages())
+
+lapply(packToInst, function(x){
+  BiocManager::install(x,ask = F,update = F)
+})
+
+# You can install NEPAL from Github:
+devtools::install_github("Famingzhao/NEPAL")
 ```
 
 ## Example
@@ -45,17 +50,17 @@ devtools::install_github("Famingzhao/NEPal")
 
 ```{r}
 ## load R package and internal data set
-library(NEPal)
-load(system.file("data", "demo.Bulk.RData", package = "NEPal", mustWork = TRUE)) # load example data
+library(NEPAL)
+load(system.file("data", "demo.Bulk.RData", package = "NEPAL", mustWork = TRUE)) # load example data
 
-## calculate NE scores using NEPal gene sets and ssGSEA method
-NE.scores.ssgsea = NEPal_bulk(bulk.data = WCDT_expr,
+## calculate NE scores using NEPAL gene sets and ssGSEA method
+NE.scores.ssgsea = NEPAL_bulk(bulk.data = WCDT_expr,
                                     method = "ssGSEA", #method = c("ssGSEA","Enet","Ridge","SVM","all")
                                     species="human", #species=c("human","mouse")
-                                    gene.sets="NEPal")
+                                    gene.sets="NEPAL")
 # gene.sets = c("all","EurUrol.2005", "CancerDiscov.2011", "CancerRes.2014", "NatMed.2016",
 #               "CellRep.2018.scRNA", "ClinCancerRes.2015", "JClinInvest.2019",
-#               "IntJCancer.2019", "HP_NE_neoplasm", "JClinOncol.2018", "BMC.Cancer.2017","NEPal")
+#               "IntJCancer.2019", "HP_NE_neoplasm", "JClinOncol.2018", "BMC.Cancer.2017","NEPAL")
 
 ## print
 head(NE.scores.ssgsea)
@@ -68,7 +73,7 @@ head(NE.scores.ssgsea)
 # 6 DTB-018     6 -0.11747824 0.7080533 -0.8255315
 
 ## or users also can calculate NE scores using machine learning algorithms
-NE.scores.all = NEPal_bulk(bulk.data = WCDT_expr,
+NE.scores.all = NEPAL_bulk(bulk.data = WCDT_expr,
                                  method = c("all"),
                                  species="human")
 ## print
@@ -133,13 +138,13 @@ draw.survival(survfit= WCDT_fit_os,ylab= "OS",
 
 ```r
 ## load internal GSE69903 mouse data set
-load(system.file("data","demo.Mus.Bulk.RData",package = "NEPal", mustWork = TRUE)) # load example data
+load(system.file("data","demo.Mus.Bulk.RData",package = "NEPAL", mustWork = TRUE)) # load example data
 
-## calculate NE scores using NEPal gene sets and ssGSEA method
-NE.mus.ssgsea = NEPal_bulk(bulk.data = GSE69903_mus_expr,
+## calculate NE scores using NEPAL gene sets and ssGSEA method
+NE.mus.ssgsea = NEPAL_bulk(bulk.data = GSE69903_mus_expr,
                                     method = "ssGSEA", #method = c("ssGSEA","Enet","Ridge","SVM","all")
                                     species = "mouse", #species=c("human","mouse")
-                                    gene.sets = "NEPal")
+                                    gene.sets = "NEPAL")
 head(NE.mus.ssgsea)
 table(row.names(GSE69903_mus_phe) == NE.mus.ssgsea$ID)
 # TRUE 
@@ -187,13 +192,13 @@ p.mus
 
 ```{r}
 ## load R package and internal data set
-library(NEPal)
+library(NEPAL)
 library(Seurat)
 seurat.data = readRDS(system.file("data", "NatMed.He.2021.Rds",
-                 package = "NEPal", mustWork = TRUE))
+                 package = "NEPAL", mustWork = TRUE))
 
-## calculate NE scores using NEPal and published gene sets based on AUCell method
-NE.seurat = NEPal_scRNA(seurat.data=seurat.data,
+## calculate NE scores using NEPAL and published gene sets based on AUCell method
+NE.seurat = NEPAL_scRNA(seurat.data=seurat.data,
                               method = "AUCell",
                               species= "human",
                               ncores=1,
