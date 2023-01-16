@@ -1,6 +1,6 @@
 # NEPAL
 
-NEPAL is to calculate NE (neuroendocrine) risk score from  bulk and single-cell transcriptomics of both human and mouse prostate cancer (PCa). NEPAL has multiple built-in algorithms and NE gene sets. NEPC risk score may be used to stratify prognosis of PCa.
+NEPAL is to calculate neuroendocrine (NE) risk score from  bulk and single-cell transcriptomics of both human and mouse prostate cancer (PCa). NEPAL has multiple built-in algorithms and NE gene sets. NEPC risk score may be used to stratify prognosis of PCa.
 
 ## Citation
 
