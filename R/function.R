@@ -186,7 +186,6 @@ NEPAL_bulk <- function(bulk.data,
                                       signature       = ne.markers.list,
                                       method          = "ssgsea",
                                       mini_gene_count = 0)
-      rs = arrange(rs,Index)
       rs$NE_UP_DN = rs$NE_sig_UP-rs$NE_sig_DN
     }
 
@@ -197,7 +196,6 @@ NEPAL_bulk <- function(bulk.data,
                                                                           "NE_sig_DN")],
                                       method          = "ssgsea",
                                       mini_gene_count = 0)
-      rs = arrange(rs,Index)
       rs$NE_UP_DN = rs$NE_sig_UP-rs$NE_sig_DN
     } else{
       rs <- IOBR::calculate_sig_score(pdata           = NULL,
@@ -205,7 +203,6 @@ NEPAL_bulk <- function(bulk.data,
                                       signature       = ne.markers.list[gene.sets],
                                       method          = "ssgsea",
                                       mini_gene_count = 0)
-      rs = arrange(rs,Index)
     }
   }
 
@@ -260,7 +257,6 @@ NEPAL_bulk <- function(bulk.data,
                                                                                 "NE_sig_DN")],
                                             method          = "ssgsea",
                                             mini_gene_count = 0)
-    res.ssGSEA = arrange(res.ssGSEA,Index)
     res.ssGSEA$NE_UP_DN = res.ssGSEA$NE_sig_UP-res.ssGSEA$NE_sig_DN
 
     # merge
