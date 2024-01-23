@@ -15,7 +15,7 @@ NEPAL is to calculate neuroendocrine (NE) risk score from  bulk and single-cell 
 Tingting Zhang#, Faming Zhao#※, Yahang Lin, Mingsheng Liu, Hongqing Zhou, Fengzhen Cui, Yang Jin, Liang Chen, Xia Sheng※
 
 Zhang T, Zhao F, Lin Y, Liu M, Zhou H, Cui F, Jin Y, Chen L, Sheng X. Integrated analysis of single-cell and bulk transcriptomics develops a robust neuroendocrine cell-intrinsic signature to predict prostate cancer progression. Theranostics 2024; 14(3):1065-1080. doi:10.7150/thno.92336. https://www.thno.org/v14p1065.htm 
-
+PMID: 38250042 DOI: 10.7150/thno.92336
 
 ## Contact
 
