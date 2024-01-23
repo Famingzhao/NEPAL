@@ -4,7 +4,7 @@ NEPAL is to calculate neuroendocrine (NE) risk score from  bulk and single-cell 
 
 **Graphical Abstract：**
 
-<img src="https://zhaoxiaoming-1306159049.cos.ap-nanjing.myqcloud.com/imgsGraphical%20Abstract.webp" alt="Graphical Abstract" style="zoom: 30%;" />
+![Graphical Abstract](https://zhaoxiaoming-1306159049.cos.ap-nanjing.myqcloud.com/imgsGraphical%20Abstract-17059849666121.webp)
 
 
 
