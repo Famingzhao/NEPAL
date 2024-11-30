@@ -24,7 +24,7 @@ Xia Sheng, PhD, [xiasheng@hust.edu.cn]( xiasheng@hust.edu.cn)
 
 Key Laboratory of Environmental Health, Ministry of Education & Ministry of Environmental Protection, School of Public Health, Tongji Medical College, Huazhong University of Science and Technology, Wuhan, China.
 
-Any technical question please contact Faming Zhao ([famingzhao@hust.edu.cn](famingzhao@hust.edu.cn)) or Tingting Zhang (tingtingzhang@hust.edu.cn).
+Any technical question please contact Faming Zhao ([famingzhao@foxmail.com](famingzhao@foxmail.com)) or Tingting Zhang (tingtingzhang@hust.edu.cn).
 
 copyright, ShengLab@HUST
 
